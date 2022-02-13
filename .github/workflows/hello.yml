@@ -15,8 +15,8 @@ jobs:
   print_date_and_dir:
     runs-on: ubuntu-18.04
     steps:
-      - name: Print date and directory
-      run: |
-        date
-        ls
+      - name: Print date
+      run: date
+      - name: Print directory info
+      run: ls -l
 
