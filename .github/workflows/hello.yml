@@ -9,14 +9,8 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-18.04
     steps:
-      - name: Say hello
+      - name: Say hello and print info
         run: |
           echo "Hello World!"
-  print_date_and_dir_job:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Print date
-      run: date
-      - name: Print directory info
-      run: ls -l
-
+          date
+          ls -l
