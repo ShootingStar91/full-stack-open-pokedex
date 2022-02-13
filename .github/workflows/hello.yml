@@ -13,4 +13,12 @@ jobs:
         run: |
           echo "Hello World!"
           date
-          ls -l
+          ls
+  print_date_and_dir_job:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Print date
+        run: date
+      - name: Print directory info
+        run: ls -l
+
