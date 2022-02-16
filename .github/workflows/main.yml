@@ -1,4 +1,4 @@
-name: Deploy
+name: Testing
 
 on:
   push:
@@ -11,41 +11,9 @@ on:
 jobs:
   run_tests:
     runs-on: ubuntu-18.04
+    if: contains(join(toJson(github.event.commits)), '#skip')
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: npm install 
-        run: npm install  
-      - name: lint
-        run: npm run eslint
-      - name: build
-        run: npm run build
-      - name: test
-        run: npm test
-      - name: e2e tests
-        uses: cypress-io/github-action@v2
-        with:
-          command: npm run test:e2e
-          start: npm run start-prod
-          wait-on: http://localhost:5000
-  deploy_to_heroku:
-    if: ${{ github.event_name == 'push' }} && contains(join(toJson(github.event.commits)), '#skip')
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "pokedexpractice" #Must be unique in Heroku
-          heroku_email: "ttu91@hotmail.com"
-          healthcheck: "https://pokedexpractice.herokuapp.com/health"
-          checkstring: "ok"
-          delay: 5
-          rollbackonhealthcheckfailed: true
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.33.0
+      - name: moikkaus
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BUMP: patch
+          COMMITS: ${{ toJson(github.event.commits) }}
+        run: echo "$COMMITS"
