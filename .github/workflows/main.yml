@@ -11,7 +11,7 @@ on:
 jobs:
   run_tests:
     runs-on: ubuntu-18.04
-    if: contains(join(toJson(github.event.commits)), '#skip')
+    #if: contains(join(toJson(github.event.commits)), '#skip')
     steps:
       - name: moikkaus
         env:
