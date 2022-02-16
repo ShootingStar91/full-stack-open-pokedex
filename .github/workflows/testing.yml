@@ -24,7 +24,7 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
   conditionality_test:
     runs-on: ubuntu-18.04
-    if: ${{ contains(join(toJson(github.event.commits.*.message)), "moi") }}
+    if: ${{ contains(join(toJson(github.event.commits.*.message)), 'moi') }}
     steps:
       - name: tulosta
         run: echo "Moi löydetty"
