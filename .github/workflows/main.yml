@@ -37,7 +37,7 @@ jobs:
           fields: repo,message,commit,author,took
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: job.status == 'failure'
+        if: ${{ job.status == 'failure' }}
   deploy_to_heroku:
     if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }} 
     runs-on: ubuntu-18.04
@@ -64,4 +64,4 @@ jobs:
           fields: repo,message,took
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always()
+        if:  ${{ job.status == 'success' }}
