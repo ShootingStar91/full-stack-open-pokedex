@@ -2,7 +2,11 @@
 
 This repository is used for the CI/CD module of the Full stack open course
 
-Fork the repository to complete course exercises
+Notice: I did most of the exercises before the material was updated so the notifications go to the slack channel and not discord.
+
+# Repository for exercise 11.20: Your own pipeline
+
+https://github.com/ShootingStar91/bloglist-app
 
 ## Commands
 
